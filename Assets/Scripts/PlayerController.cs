@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 
@@ -19,6 +18,20 @@ public class PlayerController : MonoBehaviour
     {
         float moveX = autoMoveSpeed;
         float moveY = -_playerLocomotionInput.MovementInput * moveSpeed;
+        
+        if (_playerLocomotionInput.MovementInput == 0)
+        {
+            float newY = Mathf.MoveTowards(transform.position.y, 0, Time.fixedDeltaTime * moveSpeed * 1);
+            
+            transform.position = new Vector2(transform.position.x, newY);
+            
+            if (Mathf.Abs(transform.position.y) < 0.01f)
+            {
+                transform.position = new Vector2(transform.position.x, 0);
+                moveY = 0;
+            }
+        }
         _rb.linearVelocity = new Vector2(moveX, moveY);
     }
+
 }
