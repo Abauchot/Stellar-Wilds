@@ -335,11 +335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetPrefab: {fileID: 4307648335793063159, guid: 948d9ee41c7c1446b89227bc8311dda1, type: 3}
-  spawnRate: 4
+  spawnRate: 2
   spawnXPosition: 12
   minSpacing: 2
-  lasSpawnedIndex: -1
-  spawnCount: 0
 --- !u!1 &867398416
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +641,8 @@ GameObject:
   - component: {fileID: 2142352577}
   - component: {fileID: 2142352578}
   - component: {fileID: 2142352579}
+  - component: {fileID: 2142352580}
+  - component: {fileID: 2142352581}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -714,7 +714,7 @@ Transform:
   m_GameObject: {fileID: 2142352574}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7124415, w: 0.70173156}
-  m_LocalPosition: {x: -10, y: 0.1, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -773,6 +773,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329b63a5c5abd471b8d3a672c0a3dfa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2142352580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142352574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a12c63f00c014509b5e672adcd24efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &2142352581
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142352574}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.16000004
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
