@@ -20,7 +20,6 @@ public class PlanetGravity : MonoBehaviour
         {
             ApplyGravity(player);
         }
-        Debug.Log($"Position planète : {transform.position.x}");
     }
 
     private void ApplyGravity(GameObject player)
