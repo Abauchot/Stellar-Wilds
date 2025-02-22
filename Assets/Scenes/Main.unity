@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 65210676}
   m_Layer: 0
   m_Name: Background (1)
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,6 +290,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &863906656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863906657}
+  - component: {fileID: 863906658}
+  m_Layer: 0
+  m_Name: PlanetsManager
+  m_TagString: Planet
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &863906657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863906656}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2568551, y: 4.5014343, z: -0.14989956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863906658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863906656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043823e12bfac488682c176df2178152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetPrefab: {fileID: 4307648335793063159, guid: 948d9ee41c7c1446b89227bc8311dda1, type: 3}
+  spawnRate: 4
+  spawnXPosition: 12
+  minSpacing: 2
+  lasSpawnedIndex: -1
+  spawnCount: 0
 --- !u!1 &867398416
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +505,7 @@ GameObject:
   - component: {fileID: 1630576849}
   m_Layer: 0
   m_Name: BackgroundManager
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -505,7 +555,7 @@ GameObject:
   - component: {fileID: 1926897487}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,7 +714,7 @@ Transform:
   m_GameObject: {fileID: 2142352574}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7124415, w: 0.70173156}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -10, y: 0.1, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -730,4 +780,5 @@ SceneRoots:
   - {fileID: 867398419}
   - {fileID: 860669785}
   - {fileID: 2142352576}
+  - {fileID: 863906657}
   - {fileID: 1630576848}
