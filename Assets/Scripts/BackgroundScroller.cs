@@ -8,16 +8,12 @@ public class BackgroundLoop : MonoBehaviour
 
     private void Start()
     {
-        // Vérifier si Unity a bien chargé les backgrounds depuis l'Inspector
-        Debug.Log($"Start : Backgrounds détectés : {backgrounds?.Length ?? 0}");
-
+        
         if (backgrounds == null || backgrounds.Length < 2)
         {
             Debug.LogError($"Erreur : Assigne au moins 2 backgrounds dans l'Inspector ! Actuellement : {backgrounds?.Length ?? 0}");
             return;
         }
-
-        // Vérifier que chaque background a bien un SpriteRenderer
         foreach (GameObject bg in backgrounds)
         {
             if (bg.GetComponent<SpriteRenderer>() == null)
@@ -26,8 +22,6 @@ public class BackgroundLoop : MonoBehaviour
                 return;
             }
         }
-
-        // Récupérer la largeur du premier background
         backgroundWidth = backgrounds[0].GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
@@ -39,7 +33,7 @@ public class BackgroundLoop : MonoBehaviour
     {
         foreach (GameObject bg in backgrounds)
         {
-            bg.transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
+            bg.transform.position += Vector3.left * (scrollSpeed * Time.deltaTime);
 
             // Si un background sort de l'écran, on le téléporte à droite
             if (bg.transform.position.x <= -backgroundWidth)

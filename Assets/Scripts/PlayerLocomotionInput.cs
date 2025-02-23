@@ -23,13 +23,9 @@ public class PlayerLocomotionInput : MonoBehaviour, PlayerControls.IPlayerLocomo
     public void OnMovement(InputAction.CallbackContext context)
     {
         MovementInput = context.ReadValue<float>();
-
-        Debug.Log($"Input reçu : {MovementInput}, Phase: {context.phase}");
-
         if (context.canceled)
         {
             MovementInput = 0f;
-            Debug.Log("Input relâché, remise à zéro.");
         }
     }
 

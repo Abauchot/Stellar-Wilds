@@ -21,7 +21,6 @@ public class ScoreManager : MonoBehaviour
         float time = Time.timeSinceLevelLoad;
 
         score = distance * (1 + time / 0.1f); 
-        Debug.Log($"Score: {Mathf.FloorToInt(score)}");
     }
     
     public float GetScore()

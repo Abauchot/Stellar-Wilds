@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private PlayerLocomotionInput _playerLocomotionInput;
     [SerializeField] public float moveSpeed = 5f;
     [SerializeField] public float autoMoveSpeed = 2f;
+    [SerializeField] public float minY = -9f;
+    [SerializeField] public float maxY = 9f;
 
     private void Awake()
     {
@@ -32,6 +34,9 @@ public class PlayerController : MonoBehaviour
             }
         }
         _rb.linearVelocity = new Vector2(moveX, moveY);
+        
+        float clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
+        transform.position = new Vector2(transform.position.x, clampedY);
     }
 
 }
