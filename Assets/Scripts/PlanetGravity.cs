@@ -4,13 +4,13 @@ public class PlanetGravity : MonoBehaviour
 {
     public Sprite[] planetSprites;
     [SerializeField] public float gravityStrength = 5f;
-    [SerializeField] public float gravityRadius;
-    [SerializeField] float moveSpeed = 1f;
+    [SerializeField] public float gravityRadius = 5f;
+    [SerializeField] public float moveSpeed = 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gravityRadius = GetComponent<CircleCollider2D>().radius * 3 * transform.localScale.x;
+        //gravityRadius = GetComponent<CircleCollider2D>().radius * 3 * transform.localScale.x;
         AssignRandomSprite();
     }
 
@@ -30,17 +30,23 @@ public class PlanetGravity : MonoBehaviour
         PlayerPowerUp powerUp = player.GetComponent<PlayerPowerUp>();
 
         if (rb == null || (powerUp != null && powerUp.ignoreGravity))
-            return; 
+            return;
 
         Vector2 direction = (transform.position - player.transform.position).normalized;
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
         if (distance < gravityRadius)
         {
-            float forceMagnitude = gravityStrength / (distance * distance);
+            float forceMagnitude = gravityStrength * (1 - (distance / gravityRadius));
+            forceMagnitude = Mathf.Clamp(forceMagnitude, 0, gravityStrength);
+
             rb.AddForce(direction * forceMagnitude, ForceMode2D.Force);
+        
+            
+            Debug.Log($"Force magnitude : {forceMagnitude}");
         }
     }
+
     private void Update()
     {
         if (transform.position.x < -15f)
