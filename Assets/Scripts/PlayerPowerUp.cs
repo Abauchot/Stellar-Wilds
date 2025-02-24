@@ -41,28 +41,22 @@ public class PlayerPowerUp : MonoBehaviour
     private IEnumerator SlowDownPowerUp(float duration)
     {
         _backgroundLoop.scrollSpeed *= 0.5f; 
-        Debug.Log("Slowdown activated");
         yield return new WaitForSeconds(duration);
         _backgroundLoop.scrollSpeed = _originalScrollSpeed;
-        Debug.Log("Slowdown deactivated");
     }
 
     private IEnumerator ShieldPowerUp(float duration)
     {
         isShielded = true;
-        Debug.Log("Shield activated");
         yield return new WaitForSeconds(duration);
         isShielded = false;
-        Debug.Log("Shield deactivated");
     }
     
     private IEnumerator StableOrbitPowerUp(float duration)
     {
         ignoreGravity = true;
-        Debug.Log("Stable orbit activated");
         yield return new WaitForSeconds(duration);
         ignoreGravity = false;
-        Debug.Log("Stable orbit deactivated");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -75,7 +69,6 @@ public class PlayerPowerUp : MonoBehaviour
         }
         else if(other.GetComponent<PlanetGravity>() && isShielded)
         {
-            Debug.Log("Shield protected you from gravity");
         }
     }
     

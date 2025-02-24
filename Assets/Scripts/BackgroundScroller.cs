@@ -11,7 +11,7 @@ public class BackgroundLoop : MonoBehaviour
     {
         if (backgrounds == null || backgrounds.Length < 2)
         {
-            Debug.LogError("Assign at least 2 backgrounds in the array!");
+            Debug.LogError("Assign at least 2 backgrounds in the array");
             return;
         }
 

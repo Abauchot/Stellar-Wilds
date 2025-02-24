@@ -35,7 +35,6 @@ public class PlayerLocomotionInput : MonoBehaviour, PlayerControls.IPlayerLocomo
         if (context.started)
         {
             EscapeOrbit = true;
-            Debug.Log("🚀 Escape Orbit");
         }
     }
 

@@ -68,18 +68,14 @@ public class PlayerController : MonoBehaviour
             if (orbitRadius >= orbitEscapeRadius)
             {
                 isOrbiting = false;
-
-                // Applique impulsion claire vers l'avant
+                
                 Vector2 escapeDirection = (transform.position - currentPlanet.position).normalized;
-                float escapeForce = 10f; // augmente légèrement
+                float escapeForce = 10f; 
                 _rb.AddForce(escapeDirection * escapeForce, ForceMode2D.Impulse);
 
                 currentPlanet = null;
                 orbitShrinkSpeed = 0.5f;
-
-                Debug.Log("🚀 Tu t'es échappé de l'orbite !");
-
-                // Active l'immunité temporaire
+                
                 StartCoroutine(GravityImmunityCoroutine());
             }
 

@@ -1,14 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
     private bool isGameOver = false;
     private PlayerPowerUp powerUp;
-    
+    private GameManager gameManager; // ajout de la référence
+
     private void Start()
     {
         powerUp = GetComponent<PlayerPowerUp>();
+        gameManager = FindFirstObjectByType<GameManager>(); // référence automatique au GameManager
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,14 +18,12 @@ public class PlayerCollision : MonoBehaviour
         {
             if (powerUp != null && powerUp.IsShielded()) 
             {
-                Debug.Log("🛡️ Shield blocked the collision!");
                 return; 
             }
 
             if (!isGameOver)
             {
                 isGameOver = true;
-                Debug.Log("💥 Collision avec une planète ! GAME OVER");
                 GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
                 Invoke(nameof(StopGame), 1f);
             }
@@ -34,6 +33,6 @@ public class PlayerCollision : MonoBehaviour
     private void StopGame()
     {
         Time.timeScale = 0f; 
-        Debug.Log("🔴 Game Over");
+        gameManager.GameOver(); // Appel clair du GameOver()
     }
 }

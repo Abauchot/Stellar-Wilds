@@ -2,29 +2,26 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] public Transform player;
-    [SerializeField] private float startXPosition;
-    [SerializeField] private float score = 0f;
-    
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Transform player;
+    [SerializeField] private float distanceMultiplier = 0.1f; // ajuste selon l'équilibrage souhaité
+    private float startXPosition;
+    private float score;
+
     void Start()
     {
         startXPosition = player.position.x;
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float distance = player.position.x - startXPosition;
-        float time = Time.timeSinceLevelLoad;
-
-        score = distance * (1 + time / 0.1f); 
+        float distanceTraveled = player.position.x - startXPosition;
+        if (distanceTraveled > 0)
+        {
+            score = Mathf.Max(score, distanceTraveled * distanceMultiplier);
+        }
     }
-    
-    public float GetScore()
+    public string GetScoreInLightYears()
     {
-        return Mathf.FloorToInt(score);
+        return $"{score:F2} light-years";
     }
 }
