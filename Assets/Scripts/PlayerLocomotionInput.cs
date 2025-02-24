@@ -5,6 +5,7 @@ public class PlayerLocomotionInput : MonoBehaviour, PlayerControls.IPlayerLocomo
 {
     public PlayerControls PlayerControls { get; private set; }
     public float  MovementInput { get; private set; }
+    public bool EscapeOrbit { get;  set; }
 
     private void OnEnable()
     {
@@ -26,6 +27,15 @@ public class PlayerLocomotionInput : MonoBehaviour, PlayerControls.IPlayerLocomo
         if (context.canceled)
         {
             MovementInput = 0f;
+        }
+    }
+    
+    public void OnEscapeOrbit(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            EscapeOrbit = true;
+            Debug.Log("🚀 Escape Orbit");
         }
     }
 

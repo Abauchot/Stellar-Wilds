@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.2719025, y: 6.340221, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -171,6 +171,6 @@ MonoBehaviour:
   - {fileID: 5279655512418474204, guid: 602d158f61c004b978f7db1ca3255768, type: 3}
   - {fileID: -1886564291030149113, guid: d8a47fc14a195479c88ac65eebf3d98e, type: 3}
   - {fileID: -6684091456813759714, guid: a840ed6c040354ee08e5a422a9dbc098, type: 3}
-  gravityStrength: 1000
-  gravityRadius: 5
+  gravityStrength: 1
+  gravityRadius: 10
   moveSpeed: 1

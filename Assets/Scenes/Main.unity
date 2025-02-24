@@ -382,8 +382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetPrefab: {fileID: 4307648335793063159, guid: 948d9ee41c7c1446b89227bc8311dda1, type: 3}
-  spawnRate: 2
-  spawnXPosition: 12
+  playerTransform: {fileID: 2142352576}
+  spawnRate: 1
+  spawnDistanceAhead: 15
   minSpacing: 6
 --- !u!1 &867398416
 GameObject:
@@ -674,7 +675,7 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 466332309}
   - {fileID: 1609594083}
-  scrollSpeed: 20
+  scrollSpeed: 12
 --- !u!1 &2142352574
 GameObject:
   m_ObjectHideFlags: 0

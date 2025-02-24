@@ -10,7 +10,6 @@ public class PlanetGravity : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //gravityRadius = GetComponent<CircleCollider2D>().radius * 3 * transform.localScale.x;
         AssignRandomSprite();
     }
 
@@ -28,8 +27,11 @@ public class PlanetGravity : MonoBehaviour
     {
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
         PlayerPowerUp powerUp = player.GetComponent<PlayerPowerUp>();
+        PlayerController playerController = player.GetComponent<PlayerController>();
 
-        if (rb == null || (powerUp != null && powerUp.ignoreGravity))
+        if (rb == null || playerController == null || 
+            (powerUp != null && powerUp.ignoreGravity) || 
+            playerController.HasGravityImmunity())
             return;
 
         Vector2 direction = (transform.position - player.transform.position).normalized;
@@ -37,15 +39,20 @@ public class PlanetGravity : MonoBehaviour
 
         if (distance < gravityRadius)
         {
-            float forceMagnitude = gravityStrength * (1 - (distance / gravityRadius));
-            forceMagnitude = Mathf.Clamp(forceMagnitude, 0, gravityStrength);
-
-            rb.AddForce(direction * forceMagnitude, ForceMode2D.Force);
-        
-            
-            Debug.Log($"Force magnitude : {forceMagnitude}");
+            if (distance < gravityRadius * 0.5f && !playerController.IsOrbiting())
+            {
+                playerController.StartOrbit(transform);
+            }
+            else if (!playerController.IsOrbiting())
+            {
+                float forceMagnitude = gravityStrength * (1 - (distance / gravityRadius));
+                forceMagnitude = Mathf.Clamp(forceMagnitude, 0, gravityStrength);
+                rb.AddForce(direction * forceMagnitude, ForceMode2D.Force);
+            }
         }
     }
+
+
 
     private void Update()
     {
